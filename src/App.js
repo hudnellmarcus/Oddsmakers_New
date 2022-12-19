@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Welcome from "./Components/Welcome";
 
 function App() {
+
+const allSportsUrl = "https://api.the-odds-api.com/v4/sports/?apiKey=cfc369a0682e9abfe063c7a2184ab763"; 
+
+const getAllSports = async () => {
+  const response = await fetch(allSportsUrl);
+  const allSportsData = await response.json();
+  return allSportsData; 
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <Welcome allSportsUrl={allSportsUrl}/>
     </div>
   );
 }
